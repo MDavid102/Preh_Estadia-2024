@@ -22,9 +22,13 @@
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
+/*In this case we are using the STM32 discovery board and in this case the line gest execute after it has been step into and is already in the next line*/
+/*So for the led to turn on, the line we must be on is "for(;;);"*/
 
 int main(void)
 {
+	//Setting of registers using the CMSIS library and calling the tags of the structs
+	
 	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIODEN; //Set To enable the RCC of the AHBI1 GPIOD
 	GPIOD -> MODER |= GPIO_MODER_MODE13_0; //Set the port moder of the pin we are using (13)
 	GPIOD -> ODR |= GPIO_ODR_OD13; //Set the pin 13 as output
