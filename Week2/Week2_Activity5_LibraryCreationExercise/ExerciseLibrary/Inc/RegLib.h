@@ -9,17 +9,17 @@
 #define REGLIB_H_
 
 //Defines
-#define INPUT      				00;
-#define OUTPUT     				01;
-#define ALTERNATE  				10;
-#define ANALOG     				11;
-#define LOW         			0;
-#define HIGH        			1;
-#define ENABLE       			0x01UL;
-#define DISABLE        			0x00UL;
-#define BASEADDRESSRCC          0x40023830;
-#define ADDRESSPORTCMODE        0x40020800;
-#define ADDRESSPORTCOUTD        0x40020814;
+#define INPUT      				00; //Define of port mode Input
+#define OUTPUT     				01; //Define of port mode Output
+#define ALTERNATE  				10; //Define of port mode Alternate
+#define ANALOG     				11; //Define of port mode Analog
+#define LOW         				 0; //Define a low state
+#define HIGH        				 1; //Define a high state
+#define ENABLE       			    0x01UL; //Define address for the enable of the clock
+#define DISABLE        			    0x00UL; //Define address for the disable of the clock
+#define BASEADDRESSRCC          	0x40023830; //Defibe address + offset of RCC
+#define ADDRESSPORTCMODE        	0x40020800; //Defibe address + offset of GPIO Port Mode
+#define ADDRESSPORTCOUTD        	0x40020814; //Defibe address + offset of GPIO ODR
 
 
 
@@ -37,7 +37,7 @@ typedef struct{
 	uint32_t volatile Reserved0  :2;
 	uint32_t volatile GPIOH_EN   :1;
 	uint32_t volatile Reserved1  :4;
-	uint32_t volatile CRC_EN   	 :1;
+	uint32_t volatile CRC_EN     :1;
 	uint32_t volatile Reserved2  :3;
 	uint32_t volatile Reserved3  :5;
 	uint32_t volatile DMA1_EN    :1;
@@ -87,7 +87,7 @@ typedef struct{
 	uint32_t volatile pin13      :1;
 	uint32_t volatile pin14      :1;
 	uint32_t volatile pin15      :1;
-	uint32_t const 		     	 :16; //reserved pins
+	uint32_t const 		     :16; //reserved pins
 
 }GPIOX_OUTDAT_REG_t; //Tag for this struct (GPIO port output data register)
 
