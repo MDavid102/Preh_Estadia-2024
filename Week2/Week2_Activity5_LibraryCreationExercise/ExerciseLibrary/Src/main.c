@@ -17,17 +17,17 @@
  */
 
 #include <stdint.h>
-#include "RegLib.h"
+#include "RegLib.h" //Include library 
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
 int main(void)
-{
-	RCC_Conf_t volatile *const pClkctrlReg = (RCC_Conf_t*)BASEADDRESSRCC;
-	GPIOX_MODE_REG_t volatile *const pPortCModReg = (GPIOX_MODE_REG_t*)ADDRESSPORTCMODE;
-	GPIOX_OUTDAT_REG_t volatile *const pPortCOutReg = (GPIOX_OUTDAT_REG_t*)ADDRESSPORTCOUTD;
+{	//We called the tag of the struct depending on what we want to do
+	RCC_Conf_t volatile *const pClkctrlReg = (RCC_Conf_t*)BASEADDRESSRCC; // tag of RCC struct with a pointer to the define addres
+	GPIOX_MODE_REG_t volatile *const pPortCModReg = (GPIOX_MODE_REG_t*)ADDRESSPORTCMODE; // tag of GPIOC Port Mode struct with a pointer to the define addres
+	GPIOX_OUTDAT_REG_t volatile *const pPortCOutReg = (GPIOX_OUTDAT_REG_t*)ADDRESSPORTCOUTD; // tag of GPIO C ODR struct with a pointer to the define addres
 
 	//Enable clock for GPIOC
 	pClkctrlReg -> GPIOC_EN = ENABLE;
