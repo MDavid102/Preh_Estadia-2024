@@ -17,7 +17,7 @@
  */
 
 #include <stdint.h>
-#include "stm32f407xx.h"
+#include "stm32f407xx.h" //include library CMSIS
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -25,9 +25,9 @@
 
 int main(void)
 {
-	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIODEN;
-	GPIOD -> MODER |= GPIO_MODER_MODE13_0;
-	GPIOD -> ODR |= GPIO_ODR_OD13;
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIODEN; //Set To enable the RCC of the AHBI1 GPIOD
+	GPIOD -> MODER |= GPIO_MODER_MODE13_0; //Set the port moder of the pin we are using (13)
+	GPIOD -> ODR |= GPIO_ODR_OD13; //Set the pin 13 as output
     /* Loop forever */
 	for(;;);
 }
